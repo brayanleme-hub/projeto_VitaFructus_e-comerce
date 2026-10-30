@@ -1,0 +1,149 @@
+### ============================================================
+### Testes manuais da API do VitaFructus
+### Como usar no VS Code: instale a extensão "REST Client" (Huachao Mao),
+### abra este arquivo e clique em "Send Request" acima de cada bloco.
+### O REST Client guarda o cookie de sessão sozinho entre as requisições.
+### ============================================================
+
+@base = http://localhost:3000
+
+### 1) Servidor está no ar?
+GET {{base}}/api/status
+
+### 2) Categorias
+GET {{base}}/api/categorias
+
+### 3) Todos os produtos da loja
+GET {{base}}/api/produtos
+
+### 4) Filtrar por categoria
+GET {{base}}/api/produtos?categoria=frutas
+
+### 5) Só as ofertas para evitar desperdício
+GET {{base}}/api/produtos?ofertas=1
+
+### 6) Pesquisar pelo nome
+GET {{base}}/api/produtos?busca=tomate
+
+### 7) Conferir carrinho (o servidor devolve preços e estoque reais)
+POST {{base}}/api/carrinho/conferir
+Content-Type: application/json
+
+{ "itens": [ { "produtoId": 1, "quantidade": 2 }, { "produtoId": 6, "quantidade": 50 } ] }
+
+### 8) Cadastro de cliente (já entra logado)
+POST {{base}}/api/auth/cadastro
+Content-Type: application/json
+
+{
+  "nome": "Cliente de Teste",
+  "email": "cliente@teste.com",
+  "senha": "senha12345",
+  "telefone": "11912345678",
+  "endereco": { "cep": "04230-000", "logradouro": "Estrada das Lágrimas", "numero": "2461", "bairro": "Heliópolis", "cidade": "São Paulo", "uf": "SP" }
+}
+
+### 9) Login
+POST {{base}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "cliente@teste.com", "senha": "senha12345" }
+
+### 10) Quem está logado?
+GET {{base}}/api/auth/eu
+
+### 11) Meus endereços
+GET {{base}}/api/enderecos
+
+### 12) Criar pedido. Repare: o "precoCentavos" falso é IGNORADO pelo servidor.
+POST {{base}}/api/pedidos
+Content-Type: application/json
+
+{ "itens": [ { "produtoId": 1, "quantidade": 2, "precoCentavos": 1 } ], "formaPagamento": "pix", "enderecoId": 1 }
+
+### 13) Meus pedidos
+GET {{base}}/api/pedidos
+
+### 14) Cliente tentando abrir rota de admin -> deve dar 403
+GET {{base}}/api/admin/resumo
+
+### 15) Sair
+POST {{base}}/api/auth/logout
+
+### ------------------------------------------------------------ ADMIN
+### 16) Login do administrador (use o e-mail e a senha que você criou)
+POST {{base}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "SEU_EMAIL_ADMIN", "senha": "SUA_SENHA_ADMIN" }
+
+### 17) Dashboard
+GET {{base}}/api/admin/resumo
+
+### 18) Cadastrar produto em oferta
+POST {{base}}/api/admin/produtos
+Content-Type: application/json
+
+{
+  "nome": "Uva niágara", "descricao": "Bandeja de 500 g", "categoriaId": 1, "unidade": "bandeja",
+  "precoOriginalCentavos": 990, "emOferta": true, "precoPromocionalCentavos": 690,
+  "dataLimite": "2099-12-31", "estoque": 10, "imagem": "/img/produtos/padrao.svg"
+}
+
+### 19) Oferta inválida (promoção mais cara que o original) -> deve dar 400
+POST {{base}}/api/admin/produtos
+Content-Type: application/json
+
+{ "nome": "Teste", "categoriaId": 1, "unidade": "kg", "precoOriginalCentavos": 500, "emOferta": true, "precoPromocionalCentavos": 900, "dataLimite": "2099-12-31", "estoque": 1 }
+
+### 20) Desativar um produto
+PATCH {{base}}/api/admin/produtos/1/ativo
+Content-Type: application/json
+
+{ "ativo": false }
+
+### 21) Tentar excluir produto que já foi vendido -> deve dar 409
+DELETE {{base}}/api/admin/produtos/1
+
+### 22) Pedidos recebidos (filtro opcional por status)
+GET {{base}}/api/admin/pedidos?status=pendente
+
+### 23) Cadastrar entregador
+POST {{base}}/api/admin/entregadores
+Content-Type: application/json
+
+{ "nome": "Davi Entregas", "email": "davi@teste.com", "senha": "entrega123" }
+
+### 24) Mudar status do pedido 1
+PATCH {{base}}/api/admin/pedidos/1/status
+Content-Type: application/json
+
+{ "status": "em_preparacao" }
+
+### 25) Escolher o entregador do pedido 1 (use o id que voltou no passo 23)
+PATCH {{base}}/api/admin/pedidos/1/entregador
+Content-Type: application/json
+
+{ "entregadorId": 3 }
+
+### ------------------------------------------------------------ ENTREGADOR
+### 26) Login do entregador
+POST {{base}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "davi@teste.com", "senha": "entrega123" }
+
+### 27) Minhas entregas
+GET {{base}}/api/entregas
+
+### 28) Saí para entrega
+PATCH {{base}}/api/entregas/1/status
+Content-Type: application/json
+
+{ "status": "saiu_para_entrega" }
+
+### 29) Entrega concluída
+PATCH {{base}}/api/entregas/1/status
+Content-Type: application/json
+
+{ "status": "entregue" }
