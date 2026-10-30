@@ -1,0 +1,26 @@
+{
+  "name": "vitafructus",
+  "version": "1.0.0",
+  "description": "E-commerce de hortifruti - projeto academico Etec Heliopolis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "criar-admin": "node scripts/criar-admin.js",
+    "resetar-banco": "node scripts/resetar-banco.js",
+    "test": "node --test"
+  },
+  "author": "Elias Figueiredo de Sousa e equipe VitaFructus",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "private": true
+}
