@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5e29">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <link rel="stylesheet" href="/css/painel.css">
+  <title>Produtos | Painel VitaFructus</title>
+  <script type="module" src="/admin/js/produtos.js"></script>
+</head>
+<body class="painel">
+  <main class="painel__conteudo" id="conteudo">
+    <div class="painel__cabeca">
+      <h1>Produtos e ofertas</h1>
+      <button class="botao" type="button" id="novo-produto"></button>
+    </div>
+    <div class="barra-filtros">
+      <label class="oculto-visual" for="filtro-texto">Buscar produto</label>
+      <input class="entrada" id="filtro-texto" type="search" placeholder="Buscar pelo nome">
+      <div class="abas" id="filtro-situacao" role="group" aria-label="Filtrar por situação">
+        <button type="button" data-situacao="" aria-pressed="true">Todos</button>
+        <button type="button" data-situacao="oferta" aria-pressed="false">Em oferta</button>
+        <button type="button" data-situacao="esgotado" aria-pressed="false">Esgotados</button>
+        <button type="button" data-situacao="vencido" aria-pressed="false">Vencidos</button>
+        <button type="button" data-situacao="inativo" aria-pressed="false">Inativos</button>
+      </div>
+    </div>
+    <div class="tabela-rolagem">
+      <table class="tabela">
+        <thead><tr><th>Produto</th><th>Categoria</th><th class="numero">Preço</th><th class="numero">Estoque</th><th>Data-limite</th><th>Situação</th><th class="numero">Ações</th></tr></thead>
+        <tbody id="corpo-tabela"><tr><td colspan="7" class="carregando">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+
+  <dialog class="janela" id="janela-produto" aria-labelledby="titulo-janela">
+    <form id="form-produto" novalidate>
+      <div class="janela__cabeca"><h2 id="titulo-janela">Novo produto</h2><button class="botao-icone" type="button" data-fechar-janela aria-label="Fechar">✕</button></div>
+      <div class="janela__corpo">
+        <div class="aviso aviso--erro" id="erro-produto" role="alert" hidden></div>
+        <div class="grade-campos">
+          <div class="campo c4"><label for="p-nome">Nome</label><input class="entrada" id="p-nome" name="nome" required maxlength="80"></div>
+          <div class="campo c2"><label for="p-categoria">Categoria</label><select class="entrada" id="p-categoria" name="categoriaId"></select></div>
+          <div class="campo c6"><label for="p-descricao">Descrição</label><textarea class="entrada" id="p-descricao" name="descricao" maxlength="400"></textarea></div>
+          <div class="campo c2"><label for="p-unidade">Unidade de venda</label><select class="entrada" id="p-unidade" name="unidade"></select></div>
+          <div class="campo c2"><label for="p-preco">Preço original (R$)</label><input class="entrada" id="p-preco" name="preco" inputmode="decimal" placeholder="5,99" required></div>
+          <div class="campo c2"><label for="p-estoque">Estoque</label><input class="entrada" id="p-estoque" name="estoque" type="number" min="0" step="1" value="0" required></div>
+        </div>
+        <div class="caixa-oferta">
+          <label class="marcar"><input type="checkbox" name="emOferta" id="p-oferta"> Colocar em "Ofertas para evitar desperdício"</label>
+          <div class="grade-campos" id="campos-oferta" style="margin-top:12px">
+            <div class="campo c2"><label for="p-promo">Preço promocional (R$)</label><input class="entrada" id="p-promo" name="promo" inputmode="decimal" placeholder="3,99"></div>
+            <div class="campo c2"><label for="p-desconto">ou desconto (%)</label><input class="entrada" id="p-desconto" name="desconto" type="number" min="1" max="90" step="1" placeholder="30"></div>
+            <div class="campo c2"><span class="dica" id="p-resumo-oferta" style="align-self:end"></span></div>
+          </div>
+        </div>
+        <div class="grade-campos">
+          <div class="campo c3"><label for="p-data">Data-limite de comercialização</label><input class="entrada" id="p-data" name="dataLimite" type="date"><span class="dica" id="dica-data">Obrigatória para ofertas. Depois dela o produto sai da loja.</span></div>
+          <div class="campo c3"><label class="marcar" style="margin-top:34px"><input type="checkbox" name="ativo" id="p-ativo" checked> Produto ativo (aparece na loja)</label></div>
+          <div class="campo c4"><label for="p-imagem">Imagem (caminho em /img/... ou endereço https://)</label><input class="entrada" id="p-imagem" name="imagem" placeholder="/img/produtos/banana.svg"><span class="dica">Coloque fotos em public/img/produtos/ e escreva o caminho aqui.</span></div>
+          <div class="campo c2"><img class="previa-imagem" id="p-previa" src="/img/produtos/padrao.svg" alt="Prévia da imagem"></div>
+        </div>
+      </div>
+      <div class="janela__rodape">
+        <button class="botao botao--claro" type="button" data-fechar-janela>Cancelar</button>
+        <button class="botao" type="submit">Salvar produto</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5e29">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <link rel="stylesheet" href="/css/painel.css">
+  <title>Pedidos | Painel VitaFructus</title>
+  <script type="module" src="/admin/js/pedidos.js"></script>
+</head>
+<body class="painel">
+  <main class="painel__conteudo" id="conteudo">
+    <div class="painel__cabeca"><h1>Pedidos</h1><button class="botao botao--claro" type="button" id="atualizar">Atualizar</button></div>
+    <div class="barra-filtros"><div class="abas" id="filtro-status" role="group" aria-label="Filtrar por status"></div></div>
+    <div class="tabela-rolagem">
+      <table class="tabela">
+        <thead><tr><th>Nº</th><th>Data</th><th>Cliente</th><th>Pagamento</th><th class="numero">Total</th><th>Status</th><th>Entregador</th><th class="numero">Ações</th></tr></thead>
+        <tbody id="corpo-tabela"><tr><td colspan="8" class="carregando">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+  <dialog class="janela" id="janela-pedido" aria-labelledby="titulo-pedido">
+    <div class="janela__cabeca"><h2 id="titulo-pedido">Pedido</h2><button class="botao-icone" type="button" data-fechar-janela aria-label="Fechar">✕</button></div>
+    <div class="janela__corpo" id="detalhe-pedido"></div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5e29">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <link rel="stylesheet" href="/css/painel.css">
+  <title>Visão geral | Painel VitaFructus</title>
+  <script type="module" src="/admin/js/visao-geral.js"></script>
+</head>
+<body class="painel">
+  <main class="painel__conteudo" id="conteudo">
+    <div class="painel__cabeca"><h1>Visão geral</h1><span id="data-hoje" class="pedido__data"></span></div>
+    <div class="indicadores" id="indicadores"><p class="carregando">Carregando...</p></div>
+    <div class="paineis">
+      <section class="cartao" aria-labelledby="t-data"><h2 class="h3" id="t-data">Próximos da data-limite</h2><p class="dica" id="dica-data"></p><ul class="lista-simples" id="lista-data"></ul></section>
+      <section class="cartao" aria-labelledby="t-estoque"><h2 class="h3" id="t-estoque">Estoque baixo</h2><p class="dica" id="dica-estoque"></p><ul class="lista-simples" id="lista-estoque"></ul></section>
+      <section class="cartao" aria-labelledby="t-vencidos"><h2 class="h3" id="t-vencidos">Fora da loja por data-limite vencida</h2><p class="dica">Estes produtos já não aparecem para os clientes. Atualize a data ou desative.</p><ul class="lista-simples" id="lista-vencidos"></ul></section>
+    </div>
+  </main>
+</body>
+</html>

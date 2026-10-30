@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5e29">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <link rel="stylesheet" href="/css/painel.css">
+  <title>Entregadores | Painel VitaFructus</title>
+  <script type="module" src="/admin/js/entregadores.js"></script>
+</head>
+<body class="painel">
+  <main class="painel__conteudo" id="conteudo">
+    <div class="painel__cabeca"><h1>Entregadores</h1></div>
+    <div class="paineis paineis--formulario">
+      <section class="cartao" aria-labelledby="t-novo">
+        <h2 class="h3" id="t-novo">Cadastrar entregador</h2>
+        <p class="dica">O entregador entra com este e-mail e senha e vê só as entregas dele.</p>
+        <div class="aviso aviso--erro" id="erro-entregador" role="alert" hidden></div>
+        <form id="form-entregador" novalidate>
+          <div class="campo"><label for="e-nome">Nome</label><input class="entrada" id="e-nome" name="nome" required></div>
+          <div class="campo"><label for="e-email">E-mail</label><input class="entrada" id="e-email" name="email" type="email" required></div>
+          <div class="campo"><label for="e-telefone">Telefone (opcional)</label><input class="entrada" id="e-telefone" name="telefone" type="tel"></div>
+          <div class="campo"><label for="e-senha">Senha inicial</label><input class="entrada" id="e-senha" name="senha" type="password" autocomplete="new-password" minlength="8" required><span class="dica">Pelo menos 8 caracteres. Passe para o entregador pessoalmente.</span></div>
+          <button class="botao botao--bloco" type="submit">Cadastrar entregador</button>
+        </form>
+      </section>
+      <section aria-labelledby="t-lista">
+        <h2 class="oculto-visual" id="t-lista">Lista de entregadores</h2>
+        <div class="tabela-rolagem">
+          <table class="tabela" style="min-width:560px">
+            <thead><tr><th>Nome</th><th>Contato</th><th class="numero">Entregas em andamento</th><th>Situação</th><th class="numero">Ações</th></tr></thead>
+            <tbody id="corpo-tabela"><tr><td colspan="5" class="carregando">Carregando...</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
