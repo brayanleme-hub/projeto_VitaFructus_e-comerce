@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f8a3b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <link rel="apple-touch-icon" href="/img/icones/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="VitaFructus">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <title>Criar conta | VitaFructus</title>
+  <script type="module" src="/js/paginas/cadastro.js"></script>
+</head>
+<body>
+  <div id="topo"></div>
+  <main id="conteudo" class="container pagina">
+    <section class="cartao cartao-conta cartao-conta--largo">
+      <h1>Criar conta</h1>
+      <p>Com a conta você finaliza pedidos e acompanha a entrega.</p>
+      <div class="aviso aviso--erro" id="erro-cadastro" role="alert" hidden></div>
+      <form id="form-cadastro" novalidate>
+        <h2 class="h3">Seus dados</h2>
+        <div class="grade-campos">
+          <div class="campo c6"><label for="nome">Nome completo</label><input class="entrada" id="nome" name="nome" autocomplete="name" required minlength="2" maxlength="80"></div>
+          <div class="campo c3"><label for="email">E-mail</label><input class="entrada" id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="campo c3"><label for="telefone">Telefone (opcional)</label><input class="entrada" id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 91234-5678"></div>
+          <div class="campo c3"><label for="senha">Senha</label><input class="entrada" id="senha" name="senha" type="password" autocomplete="new-password" required minlength="8" aria-describedby="dica-senha"><span class="dica" id="dica-senha">Pelo menos 8 caracteres.</span></div>
+          <div class="campo c3"><label for="confirmar">Repita a senha</label><input class="entrada" id="confirmar" name="confirmar" type="password" autocomplete="new-password" required></div>
+        </div>
+        <h2 class="h3">Endereço de entrega</h2>
+        <div class="grade-campos" id="campos-endereco"></div>
+        <button class="botao botao--grande botao--bloco" type="submit">Criar conta</button>
+      </form>
+      <hr class="separador">
+      <p>Já tem conta? <a href="/login.html" id="link-login">Entrar</a></p>
+    </section>
+  </main>
+  <div id="rodape"></div>
+</body>
+</html>

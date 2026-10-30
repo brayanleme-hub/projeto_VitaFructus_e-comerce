@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f8a3b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <link rel="apple-touch-icon" href="/img/icones/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="VitaFructus">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <title>Entrar | VitaFructus</title>
+  <script type="module" src="/js/paginas/login.js"></script>
+</head>
+<body>
+  <div id="topo"></div>
+  <main id="conteudo" class="container pagina">
+    <section class="cartao cartao-conta">
+      <h1>Entrar na sua conta</h1>
+      <p>Use o e-mail e a senha do seu cadastro.</p>
+      <div class="aviso aviso--erro" id="erro-login" role="alert" hidden></div>
+      <form id="form-login" novalidate>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input class="entrada" id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input class="entrada" id="senha" name="senha" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="botao botao--grande botao--bloco" type="submit">Entrar</button>
+      </form>
+      <hr class="separador">
+      <p>Ainda não tem conta? <a href="/cadastro.html" id="link-cadastro">Criar conta</a></p>
+    </section>
+  </main>
+  <div id="rodape"></div>
+</body>
+</html>

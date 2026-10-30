@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f8a3b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <link rel="apple-touch-icon" href="/img/icones/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="VitaFructus">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/css/estilo.css">
+  <title>Onde estamos | VitaFructus</title>
+  <script src="/vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="/js/paginas/onde-estamos.js"></script>
+</head>
+<body>
+  <div id="topo"></div>
+  <main id="conteudo" class="container pagina">
+    <div class="secao__cabeca">
+      <div>
+        <h1>Como nos encontrar</h1>
+        <p>Veja onde fica a loja, quanto você está longe dela e se entregamos no seu endereço.</p>
+      </div>
+    </div>
+
+    <div class="localizacao">
+      <section class="cartao localizacao__info" aria-labelledby="titulo-loja">
+        <h2 id="titulo-loja">Carregando...</h2>
+        <p id="endereco-loja"></p>
+        <ul class="localizacao__dados" id="dados-loja"></ul>
+        <div class="localizacao__botoes" id="botoes-loja"></div>
+        <p class="aviso aviso--alerta" id="aviso-demo" hidden>Localização demonstrativa: o ponto no mapa representa a região de Heliópolis, não um endereço real.</p>
+
+        <hr class="separador">
+        <h2 class="h3">Você está perto?</h2>
+        <p class="dica">Usamos a localização do seu aparelho só nesta tela. Ela não é enviada nem guardada no servidor.</p>
+        <button class="botao botao--grande botao--bloco" type="button" id="usar-localizacao"></button>
+        <div id="resultado-localizacao" aria-live="polite"></div>
+      </section>
+
+      <section class="localizacao__mapa" aria-label="Mapa com a localização da loja">
+        <div id="mapa" role="application" aria-label="Mapa interativo"></div>
+        <p class="dica" id="legenda-mapa"></p>
+      </section>
+    </div>
+  </main>
+  <div id="rodape"></div>
+</body>
+</html>

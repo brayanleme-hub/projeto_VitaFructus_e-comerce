@@ -1,0 +1,90 @@
+/* css/painel.css — painel administrativo e área do entregador (usa as variáveis do estilo.css) */
+.painel { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+.painel__menu {
+  position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 6px;
+  padding: 20px 14px; background: var(--folha-escura); color: #fff; overflow-y: auto;
+}
+.painel__menu .painel__logo, .painel__menu .painel__logo:hover { background: #fff; border-radius: var(--raio); padding: 8px 12px; margin-bottom: 6px; }
+.painel__logo img { height: 38px; }
+.painel__papel { font-size: 0.85rem; opacity: 0.85; margin: 0 4px 14px; }
+.painel__menu a, .painel__menu button {
+  display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--raio-pequeno);
+  color: #eaf4e5; text-decoration: none; font-weight: 700; background: none; border: 0; cursor: pointer; text-align: left; width: 100%;
+}
+.painel__menu a:hover, .painel__menu button:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.painel__menu a[aria-current='page'] { background: #fff; color: var(--folha-escura); }
+.painel__menu svg { width: 20px; height: 20px; flex: none; }
+.painel__menu .empurra { margin-top: auto; }
+.painel__conteudo { padding: 28px clamp(16px, 3vw, 40px) 80px; min-width: 0; }
+.painel__cabeca { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.painel__cabeca h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 26px; }
+.indicador { background: var(--superficie); border: 1px solid var(--linha); border-radius: var(--raio); padding: 16px 18px; text-decoration: none; color: var(--tinta); }
+.indicador:hover { border-color: var(--folha); }
+.indicador strong { display: block; font-family: var(--fonte-titulo); font-size: 2rem; font-weight: 600; color: var(--folha-escura); line-height: 1.1; }
+.indicador span { color: var(--tinta-suave); font-size: 0.92rem; }
+.indicador--alerta strong { color: #a2600a; }
+
+.paineis { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.lista-simples { list-style: none; margin: 0; padding: 0; }
+.lista-simples li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--linha); }
+.lista-simples li:last-child { border-bottom: 0; }
+.lista-simples img { width: 44px; height: 33px; object-fit: cover; border-radius: 6px; }
+.lista-simples .nome { display: flex; align-items: center; gap: 10px; }
+
+.barra-filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; }
+.barra-filtros .entrada { max-width: 280px; }
+.abas { display: flex; flex-wrap: wrap; gap: 6px; }
+.abas button { padding: 8px 14px; border-radius: 999px; border: 2px solid var(--linha); background: var(--superficie); font-weight: 700; cursor: pointer; }
+.abas button[aria-pressed='true'] { background: var(--folha); color: #fff; border-color: var(--folha); }
+
+.tabela-rolagem { overflow-x: auto; background: var(--superficie); border: 1px solid var(--linha); border-radius: var(--raio); }
+.tabela { width: 100%; border-collapse: collapse; min-width: 760px; }
+.tabela th, .tabela td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--linha); vertical-align: middle; }
+.tabela th { font-size: 0.86rem; color: var(--tinta-suave); background: var(--fundo); }
+.tabela tr:last-child td { border-bottom: 0; }
+.tabela td.numero, .tabela th.numero { text-align: right; white-space: nowrap; }
+.tabela .produto-celula { display: flex; align-items: center; gap: 12px; min-width: 210px; }
+.tabela .produto-celula img { width: 56px; height: 42px; object-fit: cover; border-radius: 6px; }
+.tabela .acoes { display: flex; gap: 6px; justify-content: flex-end; flex-wrap: nowrap; }
+.tabela s { color: var(--tinta-suave); font-size: 0.85rem; }
+
+dialog.janela {
+  width: min(94vw, 720px); max-height: 92vh; padding: 0; border: 0; border-radius: var(--raio-grande);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3); color: var(--tinta); background: var(--superficie);
+}
+dialog.janela::backdrop { background: rgba(20, 30, 22, 0.5); }
+.janela__cabeca { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: var(--superficie); border-bottom: 1px solid var(--linha); }
+.janela__cabeca h2 { margin: 0; font-size: 1.4rem; }
+.janela__corpo { padding: 20px 22px; }
+.janela__rodape { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 22px; border-top: 1px solid var(--linha); position: sticky; bottom: 0; background: var(--superficie); }
+.caixa-oferta { border: 2px dashed var(--raiz); background: var(--raiz-clara); border-radius: var(--raio); padding: 14px 16px; margin-bottom: 14px; }
+.previa-imagem { width: 100%; max-width: 220px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--raio-pequeno); border: 1px solid var(--linha); }
+.marcar { display: flex; align-items: center; gap: 10px; font-weight: 700; cursor: pointer; }
+.marcar input { width: 20px; height: 20px; accent-color: var(--folha); }
+
+.cartoes-entrega { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.entrega h2 { font-size: 1.3rem; margin: 0; }
+.entrega dl { margin: 12px 0; display: grid; gap: 6px; }
+.entrega dt { font-size: 0.85rem; color: var(--tinta-suave); }
+.entrega dd { margin: 0 0 6px; }
+.entrega__acoes { display: grid; gap: 8px; margin-top: 12px; }
+
+@media (max-width: 860px) {
+  .painel { grid-template-columns: 1fr; }
+  .painel__menu {
+    position: sticky; top: 0; z-index: 30; height: auto; flex-direction: row; align-items: center; gap: 4px;
+    padding: 8px 10px; overflow-x: auto;
+  }
+  .painel__logo, .painel__papel { display: none; }
+  .painel__menu a, .painel__menu button { flex: none; width: auto; padding: 9px 12px; font-size: 0.92rem; }
+  .painel__menu .empurra { margin-top: 0; margin-left: auto; }
+  .painel__conteudo { padding-top: 20px; }
+}
+html.alto-contraste .painel__menu { background: #000; border-right: 2px solid #fff; }
+html.alto-contraste .painel__menu a[aria-current='page'] { background: #ffe14d; color: #000; }
+html.alto-contraste .tabela th { background: #000; }
+html.alto-contraste .caixa-oferta { background: #000; }
+.paineis--formulario { grid-template-columns: minmax(280px, 380px) 1fr; align-items: start; }
+@media (max-width: 1000px) { .paineis--formulario { grid-template-columns: 1fr; } }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="VitaFructus: frutas, verduras e legumes do hortifrúti do bairro, com ofertas para evitar desperdício.">
+  <meta name="theme-color" content="#2f8a3b">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <link rel="apple-touch-icon" href="/img/icones/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="VitaFructus">
+  <title>VitaFructus | Hortifrúti on-line</title>
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <script type="module" src="/js/paginas/inicio.js"></script>
+</head>
+<body>
+  <div id="topo"></div>
+
+  <main id="conteudo">
+    <!-- Banner principal -->
+    <section class="hero">
+      <div class="container hero__grade">
+        <div>
+          <h1>Frescor, qualidade e economia na sua mesa.</h1>
+          <p class="hero__texto">Frutas, verduras e legumes escolhidos no ponto certo, do hortifrúti do bairro direto para a sua casa.</p>
+          <div class="hero__acoes">
+            <a class="botao botao--grande" href="#produtos">Ver produtos</a>
+            <a class="botao botao--grande botao--oferta" href="#ofertas">Ver ofertas do dia</a>
+          </div>
+        </div>
+        <div class="caixote" aria-hidden="true">
+          <div class="caixote__frutas">
+            <img src="/img/produtos/laranja.jpg" alt="" width="480" height="360">
+            <img src="/img/produtos/morango.jpg" alt="" width="480" height="360">
+            <img src="/img/produtos/alface.jpg" alt="" width="480" height="360">
+            <img src="/img/produtos/tomate.jpg" alt="" width="480" height="360">
+            <img src="/img/produtos/banana.jpg" alt="" width="480" height="360">
+            <img src="/img/produtos/cenoura.jpg" alt="" width="480" height="360">
+          </div>
+          <div class="caixote__ripas"></div>
+          <span class="caixote__etiqueta">Feira da semana</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carrossel promocional -->
+    <section class="container carrossel" aria-roledescription="carrossel" aria-label="Destaques da loja">
+      <div class="carrossel__trilho">
+        <div class="carrossel__faixa" id="faixa-carrossel">
+          <div class="banner banner--ofertas" role="group" aria-roledescription="slide" aria-label="1 de 3">
+            <div>
+              <h2>Ofertas para evitar desperdício</h2>
+              <p>Produtos frescos no ponto ideal para consumir logo, com desconto de verdade.</p>
+              <a class="botao botao--oferta" href="#ofertas">Ver ofertas</a>
+            </div>
+            <img src="/img/produtos/abacate.jpg" alt="" width="480" height="360">
+          </div>
+          <div class="banner banner--cesta" role="group" aria-roledescription="slide" aria-label="2 de 3">
+            <div>
+              <h2>Monte a sua cesta da semana</h2>
+              <p>Escolha por categoria e receba tudo junto, com cada item conferido na separação.</p>
+              <a class="botao" href="/?categoria=frutas#produtos" data-categoria="frutas">Ver frutas</a>
+            </div>
+            <img src="/img/produtos/feira.jpg" alt="" width="480" height="360">
+          </div>
+          <div class="banner banner--folhas" role="group" aria-roledescription="slide" aria-label="3 de 3">
+            <div>
+              <h2>Verduras que chegam crocantes</h2>
+              <p>Alface, couve e rúcula separadas no dia da entrega.</p>
+              <a class="botao" href="/?categoria=verduras#produtos" data-categoria="verduras">Ver verduras</a>
+            </div>
+            <img src="/img/produtos/alface.jpg" alt="" width="480" height="360">
+          </div>
+        </div>
+      </div>
+      <div class="carrossel__controles">
+        <button class="botao-icone" type="button" id="carrossel-anterior" aria-label="Destaque anterior"></button>
+        <div class="carrossel__pontos" id="pontos-carrossel"></div>
+        <button class="botao-icone" type="button" id="carrossel-proximo" aria-label="Próximo destaque"></button>
+      </div>
+    </section>
+
+    <!-- RF07: Ofertas para evitar desperdício -->
+    <section class="ofertas secao" id="ofertas" aria-labelledby="titulo-ofertas" hidden>
+      <div class="container">
+        <div class="secao__cabeca">
+          <div>
+            <h2 id="titulo-ofertas">Ofertas para evitar desperdício</h2>
+            <p class="ofertas__subtitulo">Aproveite antes que acabe!</p>
+            <p class="ofertas__garantia" id="garantia-ofertas"></p>
+          </div>
+        </div>
+        <div class="grade-produtos" id="grade-ofertas"></div>
+      </div>
+    </section>
+
+    <!-- Categorias e produtos -->
+    <section class="secao" id="produtos" aria-labelledby="titulo-produtos">
+      <div class="container">
+        <div class="secao__cabeca">
+          <div>
+            <h2 id="titulo-produtos">Nossos produtos</h2>
+            <p>Escolha uma categoria ou use a busca lá em cima.</p>
+          </div>
+        </div>
+        <div class="categorias" id="categorias" role="group" aria-label="Filtrar por categoria"></div>
+        <div class="resultado-busca" id="resultado-busca" hidden></div>
+        <div class="grade-produtos" id="grade-produtos" aria-live="polite">
+          <p class="carregando">Carregando produtos...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="rodape"></div>
+</body>
+</html>
