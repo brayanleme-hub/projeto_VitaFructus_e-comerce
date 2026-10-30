@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5e29">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/img/icones/favicon-48.png">
+  <script src="/js/preferencias.js"></script>
+  <link rel="stylesheet" href="/css/estilo.css">
+  <link rel="stylesheet" href="/css/painel.css">
+  <title>Minhas entregas | VitaFructus</title>
+  <script type="module" src="/entregas/js/entregas.js"></script>
+</head>
+<body class="painel">
+  <main class="painel__conteudo" id="conteudo">
+    <div class="painel__cabeca"><h1>Minhas entregas</h1><button class="botao botao--claro" type="button" id="atualizar">Atualizar</button></div>
+    <div class="cartoes-entrega" id="lista-entregas"><p class="carregando">Carregando entregas...</p></div>
+    <h2 class="h3" style="margin-top:32px">Entregas concluídas</h2>
+    <ul class="lista-simples cartao" id="lista-concluidas"></ul>
+  </main>
+</body>
+</html>
